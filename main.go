@@ -1,10 +1,4 @@
-// Load test for the QuestionBank API (signup, login, GET /v1/me).
-//
-// Creates throwaway users, then load-tests login only.
-// Intended for your own host (default https://api.csn2.me).
-//
-//	cd loadtest && go run .
-//	cd loadtest && go run . -n 2000 -login-rpm 1000
+
 package main
 
 import (
@@ -31,7 +25,7 @@ type result struct {
 }
 
 func main() {
-	base := flag.String("base", env("LOADTEST_BASE", "https://api.csn2.me"), "API origin")
+	base := flag.String("base", env("LOADTEST_BASE", "https:"), "API origin")
 	n := flag.Int("n", 2000, "number of users to create")
 	c := flag.Int("c", 200, "requests in flight at once")
 	requests := flag.Int("requests", 100000, "total HTTP requests to spread across -duration")
